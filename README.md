@@ -1,107 +1,131 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mN9h8nSd)
 # Challenge 4: Sistem Manajemen Nilai Siswa
 
 ## Deskripsi
-Buatlah aplikasi CLI (Command Line Interface) untuk sistem manajemen nilai siswa menggunakan JavaScript dengan pendekatan Object-Oriented Programming (OOP).
 
-## Tujuan Pembelajaran
-- Memahami konsep OOP dalam JavaScript (Class, Object, Inheritance, Encapsulation)
-- Mengimplementasikan CRUD operations
-- Mengelola data menggunakan array dan object
-- Membuat interactive CLI application
-- Menerapkan error handling
+Aplikasi CLI (Command Line Interface) untuk sistem manajemen nilai siswa menggunakan JavaScript dengan pendekatan Object-Oriented Programming (OOP).
 
-## Fitur yang Harus Diimplementasikan
+## Fitur yang Diimplementasikan
 
-### 1. Class Student
-Buat class `Student` dengan properti:
-- `id` (string/number) - ID unik siswa
-- `name` (string) - Nama siswa
-- `class` (string) - Kelas siswa (misal: "10A", "11B")
-- `grades` (object) - Object berisi nilai mata pelajaran
+### ✅ Class Student
 
-Method yang harus ada:
-- `addGrade(subject, score)` - Menambah nilai mata pelajaran
-- `getAverage()` - Menghitung rata-rata nilai
-- `getGradeStatus()` - Menentukan status (Lulus/Tidak Lulus)
-- `displayInfo()` - Menampilkan informasi siswa
+Class `Student` dengan properti dan method lengkap:
 
-### 2. Class StudentManager
-Buat class `StudentManager` untuk mengelola data siswa:
+- **Properti:**
 
-Method yang harus ada:
-- `addStudent(student)` - Menambah siswa baru
+  - `id` - ID unik siswa
+  - `name` - Nama siswa
+  - `class` - Kelas siswa (misal: "10A", "11B")
+  - `grades` - Object berisi nilai mata pelajaran
+
+- **Method:**
+  - `addGrade(subject, score)` - Menambah/update nilai mata pelajaran dengan validasi (0-100)
+  - `getAverage()` - Menghitung rata-rata nilai
+  - `getGradeStatus()` - Menentukan status (Lulus >= 75, Tidak Lulus < 75)
+  - `displayInfo()` - Menampilkan informasi lengkap siswa
+
+### ✅ Class StudentManager
+
+Class `StudentManager` untuk mengelola data siswa:
+
+- `addStudent(student)` - Menambah siswa baru dengan validasi ID unik
 - `removeStudent(id)` - Menghapus siswa berdasarkan ID
 - `findStudent(id)` - Mencari siswa berdasarkan ID
-- `updateStudent(id, data)` - Update data siswa
+- `updateStudent(id, data)` - Update data siswa (nama, kelas)
 - `getAllStudents()` - Mendapatkan semua data siswa
 - `getTopStudents(n)` - Mendapatkan n siswa dengan rata-rata tertinggi
 - `displayAllStudents()` - Menampilkan semua siswa
+- **BONUS:** `getStudentsByClass(className)` - Filter siswa berdasarkan kelas
+- **BONUS:** `getClassStatistics(className)` - Statistik kelas
 
-### 3. CLI Interface
-Implementasikan menu interaktif dengan pilihan:
-1. Tambah Siswa Baru
-2. Lihat Semua Siswa
-3. Cari Siswa (by ID)
-4. Update Data Siswa
-5. Hapus Siswa
-6. Tambah Nilai Siswa
-7. Lihat Top 3 Siswa
-8. Keluar
+### ✅ CLI Interface
 
-## Kriteria Penilaian
+Menu interaktif dengan 8 pilihan:
 
-### OOP Implementation (40%)
-- Penggunaan class dengan benar
-- Encapsulation (private/public properties)
-- Method yang sesuai dengan tanggung jawab class
-- Constructor yang tepat
+1. **Tambah Siswa Baru** - Input ID, nama, dan kelas
+2. **Lihat Semua Siswa** - Menampilkan daftar lengkap siswa
+3. **Cari Siswa** - Mencari siswa berdasarkan ID
+4. **Update Data Siswa** - Mengubah nama atau kelas siswa
+5. **Hapus Siswa** - Menghapus siswa dengan konfirmasi
+6. **Tambah Nilai Siswa** - Menambah nilai mata pelajaran
+7. **Lihat Top 3 Siswa** - Menampilkan 3 siswa terbaik
+8. **Keluar** - Keluar dari aplikasi
 
-### Functionality (40%)
-- Semua fitur CRUD berfungsi dengan baik
-- Perhitungan rata-rata dan status benar
-- Pencarian dan sorting berfungsi
-- Data persistence (bonus jika menggunakan file)
+## Cara Menjalankan
 
-### Code Quality (20%)
-- Clean code dan readable
-- Error handling yang baik
-- Validasi input
-- Dokumentasi/komentar yang jelas
+### 1. Install Dependencies
 
-## Ketentuan Teknis
+```bash
+npm install
+```
 
-1. **Struktur Nilai:**
-   - Setiap siswa memiliki nilai untuk berbagai mata pelajaran
-   - Nilai harus dalam rentang 0-100
-   - Rata-rata >= 75 = Lulus, < 75 = Tidak Lulus
+### 2. Jalankan Aplikasi
 
-2. **Validasi:**
-   - ID siswa harus unik
-   - Nama tidak boleh kosong
-   - Nilai harus berupa angka 0-100
-   - Input harus divalidasi sebelum diproses
+```bash
+npm start
+```
 
-3. **Error Handling:**
-   - Tangani error saat siswa tidak ditemukan
-   - Tangani input yang tidak valid
-   - Berikan pesan error yang informatif
+atau
 
-## Contoh Output
+```bash
+node index.js
+```
+
+## Contoh Penggunaan
+
+### Menambah Siswa Baru
 
 ```
-=== SISTEM MANAJEMEN NILAI SISWA ===
-1. Tambah Siswa Baru
-2. Lihat Semua Siswa
-3. Cari Siswa
-4. Update Data Siswa
-5. Hapus Siswa
-6. Tambah Nilai Siswa
-7. Lihat Top 3 Siswa
-8. Keluar
+Pilih menu (1-8): 1
+
+--- Tambah Siswa Baru ---
+Masukkan ID siswa: S001
+Masukkan nama siswa: Budi Santoso
+Masukkan kelas siswa (misal: 10A): 10A
+
+Siswa Budi Santoso berhasil ditambahkan!
+```
+
+### Menambah Nilai Siswa
+
+```
+Pilih menu (1-8): 6
+
+--- Tambah Nilai Siswa ---
+Masukkan ID siswa: S001
+
+------------------------
+ID: S001
+Nama: Budi Santoso
+Kelas: 10A
+Belum ada nilai
+------------------------
+
+Masukkan nama mata pelajaran: Matematika
+Masukkan nilai (0-100): 85
+
+Nilai Matematika berhasil ditambahkan!
+
+------------------------
+ID: S001
+Nama: Budi Santoso
+Kelas: 10A
+Mata Pelajaran:
+  - Matematika: 85
+Rata-rata: 85
+Status: Lulus
+------------------------
+```
+
+### Melihat Semua Siswa
+
+```
 Pilih menu (1-8): 2
 
+--- Daftar Semua Siswa ---
+
 === DAFTAR SISWA ===
+
+------------------------
 ID: S001
 Nama: Budi Santoso
 Kelas: 10A
@@ -114,46 +138,118 @@ Status: Lulus
 ------------------------
 ```
 
-## Cara Mengerjakan
+### Melihat Top 3 Siswa
 
-1. Clone repository ini
-2. Implementasikan class-class yang diperlukan di folder `src/`
-3. Implementasikan CLI di file `index.js`
-4. Test aplikasi Anda dengan menjalankan `node index.js`
-5. Pastikan semua fitur berfungsi dengan baik
+```
+Pilih menu (1-8): 7
 
-## Bonus Points
+--- Top 3 Siswa ---
 
-- Implementasi data persistence menggunakan JSON file
-- Tambah fitur export laporan ke file
-- Implementasi filtering (misal: filter by class)
-- Tambah fitur statistik kelas
-- UI yang lebih menarik dengan colors (chalk/colors library)
+Siswa dengan rata-rata nilai tertinggi:
 
-## Submission
+1. Budi Santoso (ID: S001)
+   Kelas: 10A
+   Rata-rata: 87.67
+   Status: Lulus
 
-Pastikan repository Anda berisi:
-- Source code lengkap
-- README.md dengan cara menjalankan
-- Contoh data atau screenshot hasil running
-- Dokumentasi kode yang jelas
+2. Siti Nurhaliza (ID: S002)
+   Kelas: 10B
+   Rata-rata: 85.5
+   Status: Lulus
 
-## Tips
+3. Ahmad Dahlan (ID: S003)
+   Kelas: 10A
+   Rata-rata: 78.33
+   Status: Lulus
+```
 
-- Mulai dengan membuat class Student terlebih dahulu
-- Test setiap method sebelum melanjutkan
-- Gunakan readline-sync atau inquirer untuk input CLI
-- Pisahkan logic dan UI untuk code yang lebih clean
-- Commit secara berkala dengan pesan yang jelas
+## Struktur Project
 
-## Resources
+```
+challenge-4-hanseldad-1/
+├── src/
+│   ├── Student.js          # Class Student
+│   └── StudentManager.js   # Class StudentManager
+├── index.js                # Main CLI application
+├── package.json            # Dependencies
+├── .gitignore             # Git ignore file
+└── README.md              # Dokumentasi
+```
 
-- [MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
-- [Node.js readline-sync](https://www.npmjs.com/package/readline-sync)
-- [JavaScript OOP Guide](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_programming)
+## Fitur Validasi
+
+### Input Validation
+
+- ✅ ID siswa harus unik
+- ✅ Nama tidak boleh kosong
+- ✅ Kelas tidak boleh kosong
+- ✅ Nilai harus berupa angka
+- ✅ Nilai harus dalam rentang 0-100
+- ✅ Mata pelajaran tidak boleh kosong
+
+### Error Handling
+
+- ✅ Siswa tidak ditemukan
+- ✅ ID duplikat
+- ✅ Input tidak valid
+- ✅ Pesan error yang informatif
+
+## Kriteria Kelulusan
+
+- **Lulus:** Rata-rata nilai >= 75
+- **Tidak Lulus:** Rata-rata nilai < 75
+
+## Teknologi yang Digunakan
+
+- **Node.js** - Runtime environment
+- **ES6 Modules** - Import/Export syntax
+- **readline-sync** - Library untuk input CLI
+- **OOP JavaScript** - Class, Constructor, Methods
+
+## Fitur Bonus yang Diimplementasikan
+
+- ✅ Method `getStudentsByClass()` - Filter siswa berdasarkan kelas
+- ✅ Method `getClassStatistics()` - Statistik kelas (jumlah siswa, rata-rata, lulus/tidak lulus)
+- ✅ Konfirmasi sebelum menghapus siswa
+- ✅ UI yang lebih menarik dengan border dan formatting
+- ✅ Validasi input yang komprehensif
+- ✅ Error handling yang baik
+
+## Cara Testing Manual
+
+1. **Test Tambah Siswa:**
+
+   - Tambah beberapa siswa dengan ID berbeda
+   - Coba tambah siswa dengan ID yang sama (harus error)
+
+2. **Test Tambah Nilai:**
+
+   - Tambah nilai untuk siswa
+   - Coba input nilai di luar range 0-100 (harus error)
+   - Tambah beberapa mata pelajaran
+
+3. **Test Update:**
+
+   - Update nama atau kelas siswa
+   - Verifikasi perubahan dengan menu "Cari Siswa"
+
+4. **Test Hapus:**
+
+   - Hapus siswa
+   - Verifikasi siswa sudah tidak ada
+
+5. **Test Top Students:**
+   - Tambah beberapa siswa dengan nilai berbeda
+   - Lihat top 3 siswa (harus terurut dari tertinggi)
+
+## Author
+
+Sistem Manajemen Nilai Siswa - Challenge 4
+
+## License
+
+ISC
 
 ---
-**Deadline:** [Tentukan deadline sesuai kebutuhan]
 
-**Happy Coding!**
-# t-challenge-4-rep
+**Happy Coding!** 🚀
